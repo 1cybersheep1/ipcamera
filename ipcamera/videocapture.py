@@ -6,16 +6,11 @@ import cv2
 
 
 class ImprovedVideoCapture:
-    def __init__(self, stream, width=640, height=480):
+    def __init__(self, stream):
         self.video_stream = cv2.VideoCapture(stream)
-        self.resizeVideo(width,height)
         self.was_read, self.frame = self.video_stream.read()
         self.lock = threading.Lock()
         self.active = False
-
-    def resizeVideo(self, new_width, new_height):
-        self.video_stream.set(cv2.CAP_PROP_FRAME_WIDTH, new_width)
-        self.video_stream.set(cv2.CAP_PROP_FRAME_HEIGHT, new_height)
 
     def start(self):
         if not(self.active):   
