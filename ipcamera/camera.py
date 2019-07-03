@@ -26,7 +26,12 @@ class IpCamera:
         if not(parameter in valid_parameters and newValue in valid_parameters[parameter]):
             raise ValueError('Invalid parameter or value.')     
         try:
-            response = requests.get(f'{self.url}/settings/{parameter}?set={newValue}', timeout=5)
+            if parameter == 'flashlight':
+                command = 'enabletorch' if newValue == 'on' else 'disabletorch'
+                response = requests.get(f'{self.url}/settings/{command}', timeout=5)
+            else:
+                response = requests.get(f'{self.url}/settings/{parameter}?set={newValue}', timeout=5)
+            
             response.raise_for_status()
         except:
             raise ConnectionError('IpCamera connection not working.')
