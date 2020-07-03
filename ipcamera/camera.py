@@ -4,8 +4,8 @@
 import requests
 from requests.exceptions import ConnectionError
 
-from videocapture import ImprovedVideoCapture
-from parameters import valid_parameters
+from ipcamera.videocapture import ImprovedVideoCapture
+from ipcamera.parameters import valid_parameters
 
 # Stream inactivo da bug implementar check
 class IpCamera:

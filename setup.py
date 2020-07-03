@@ -27,5 +27,5 @@ setup(
     keywords='ipcamera remote camera android',
     packages=find_packages(),
     setup_requires=['setuptools>=38.6.0'],
-    install_requires=['opencv', 'numpy', 'requests', 'threading']
+    install_requires=['opencv-python', 'numpy', 'requests']
 )
